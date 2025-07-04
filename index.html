@@ -1,10 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=src/pages/dashboard.html" />
-  <title>Redirecting...</title>
+    <meta charset="UTF-8" />
+    <title>Home - Futura Studio</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- Navbar loader -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch('/src/components/navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                    setupMobileMenu(); // jalankan setelah navbar dimuat
+                });
+        });
+    </script>
 </head>
-<body>
+
+<body class="overflow-hidden">
+
+    <div id="navbar" class="relative z-10">
+        <!-- Navbar kamu -->
+    </div>
+
+    <!-- Fullscreen Swiper -->
+    <div class="swiper fixed top-0 left-0 w-full h-screen z-0">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="https://res.cloudinary.com/dwevy4ex2/image/upload/v1751644358/A45_i2oblk.jpg" alt="Foto 1" class="w-full h-full object-cover">
+            </div>
+            <div class="swiper-slide">
+                <img src="https://res.cloudinary.com/dwevy4ex2/image/upload/v1751642234/D25_zezcdh.jpg" alt="Foto 2" class="w-full h-full object-cover">
+            </div>
+            <div class="swiper-slide">
+                <img src="https://res.cloudinary.com/dwevy4ex2/image/upload/v1751645015/C23_pfverr.jpg" alt="Foto 3" class="w-full h-full object-cover">
+            </div>
+            <div class="swiper-slide">
+                <img src="https://res.cloudinary.com/dwevy4ex2/image/upload/v1751644295/E14_ogy4n0.jpg" alt="Foto 4" class="w-full h-full object-cover">
+            </div>
+            <div class="swiper-slide">
+                <img src="https://res.cloudinary.com/dwevy4ex2/image/upload/v1751644963/G6_fwmec1.jpg" alt="Foto 5" class="w-full h-full object-cover">
+            </div>
+            <div class="swiper-slide">
+                <img src="https://res.cloudinary.com/dwevy4ex2/image/upload/v1751643898/B22_lq3nau.jpg" alt="Foto 6" class="w-full h-full object-cover">
+            </div>
+            <div class="swiper-slide">
+                <img src="https://res.cloudinary.com/dwevy4ex2/image/upload/v1751641621/F12_ptwolw.jpg" alt="Foto 7" class="w-full h-full object-cover">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <div id="footer"></div>
+
+    <script type="module" src="/src/main.js"></script>
 </body>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- Inisialisasi Swiper -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Swiper('.swiper', {
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            }
+        });
+    });
+
+    function setupMobileMenu() {
+        const hamburgerBtn = document.getElementById("hamburgerBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const closeBtn = document.getElementById("closeBtn");
+        const karyaToggle = document.getElementById("karyaToggleMobile");
+        const karyaMenu = document.getElementById("karyaMenuMobile");
+
+        if (hamburgerBtn && mobileMenu && closeBtn) {
+            hamburgerBtn.addEventListener("click", () => {
+                mobileMenu.classList.remove("-translate-x-full");
+            });
+
+            closeBtn.addEventListener("click", () => {
+                mobileMenu.classList.add("-translate-x-full");
+            });
+
+            const menuLinks = mobileMenu.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('-translate-x-full');
+                });
+            });
+
+            if (karyaToggle && karyaMenu) {
+                karyaToggle.addEventListener("click", () => {
+                    karyaMenu.classList.toggle("hidden");
+                });
+            }
+        }
+    }
+
+    // Pastikan ini tetap dipanggil setelah fetch navbar
+    window.addEventListener('DOMContentLoaded', () => {
+        fetch('/src/components/navbar.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+                setupMobileMenu(); // Ini yang penting
+            });
+    });
+</script>
+
+</body>
+
 </html>
