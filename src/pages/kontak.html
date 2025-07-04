@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontak Kami - Futura Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script>
+        function pilihLayanan(event, item) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            const alpineData = Alpine.closest(event.target);
+            if (alpineData) {
+                alpineData.__x.$data.selected = item;
+                alpineData.__x.$data.open = false;
+            }
+        }
+    </script>
+
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f3e5dc;
+        }
+
+        .flatpickr-calendar {
+            background: #fffaf5;
+            border: 1px solid #d2b48c;
+        }
+
+        .flatpickr-day.today {
+            background: #c19a6b;
+            color: white;
+        }
+
+        .flatpickr-day.selected {
+            background: #8b5e3c;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F5EFE6] text-gray-800">
+    <div id="navbar"></div>
+
+    <section class="max-w-9xl mx-auto px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+                <h2 class="text-2xl font-semibold mb-14">Abadikan Cerita Bersama Kami</h2>
+                <p class="mb-4 leading-relaxed">
+                    Studio kami berdiri di Jember, tempat di mana setiap momen diubah menjadi kenangan indah. <br>
+                    Kami tak hanya menangkap gambar, tapi juga menyimpan cerita dari senyuman kecil hingga momen paling
+                    berkesan.
+                </p>
+                <p class="mb-8">—<br>Abadikan kisahmu bersama lensa kami</p>
+
+                <div class="mb-6">
+                    <p class="text-xs tracking-widest text-gray-500 uppercase">Email</p>
+                    <p class="text-base">futurastudio17@gmail.com</p>
+                </div>
+
+                <div class="mb-6">
+                    <p class="text-xs tracking-widest text-gray-500 uppercase">Whatsapp</p>
+                    <p class="text-base">+62 812 5970 6969</p>
+                </div>
+
+                <div class="mb-6">
+                    <p class="text-xs tracking-widest text-gray-500 uppercase">Jam Kerja</p>
+                    <p class="text-base">09:00 - 18:00 by Appointment</p>
+                </div>
+
+                <div class="mb-6">
+                    <p class="text-xs tracking-widest text-gray-500 uppercase">Lokasi</p>
+                    <p class="text-base">Jl. Sunan Bonang No. 17, Talangsari, Jember, Jawa Timur</p>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold mb-16">Pesan Sekarang</h2>
+                <form id="waForm" class="space-y-6">
+                    <div>
+                        <label class="uppercase text-xs tracking-widest text-gray-700 block mb-1">Nama Lengkap<span
+                                class="text-red-500">*</span></label>
+                        <input type="text" name="nama" required
+                            class="w-full border-b border-gray-500 bg-transparent focus:outline-none py-1">
+                    </div>
+
+                    <div>
+                        <label class="uppercase text-xs tracking-widest text-gray-700 block mb-1">Username
+                            Instagram<span class="text-red-500">*</span></label>
+                        <input type="text" name="instagram" required
+                            class="w-full border-b border-gray-500 bg-transparent focus:outline-none py-1">
+
+                    </div>
+
+                    <div>
+                        <label class="uppercase text-xs tracking-widest text-gray-700 block mb-1">Alamat E-mail<span
+                                class="text-red-500">*</span></label>
+                        <input type="email" name="email" required
+                            class="w-full border-b border-gray-500 bg-transparent focus:outline-none py-1">
+                    </div>
+
+                    <div>
+                        <label class="uppercase text-xs tracking-widest text-gray-700 block mb-1">
+                            Tanggal Pemotretan<span class="text-red-500">*</span>
+                        </label>
+                        <div class="relative">
+                            <input type="text" id="tanggalPicker" name="tanggal" required
+                                class="w-full border-b border-gray-500 bg-transparent focus:outline-none py-1 pl-8"
+                                placeholder="Pilih tanggal">
+
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="absolute left-1 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600 pointer-events-none"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10m-10 4h10m-10 4h6m3-16h2a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2h2" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div x-data="{ open: false, selected: '' }" class="relative">
+                        <label class="uppercase text-xs tracking-widest text-gray-700 block mb-1">Kategori Layanan<span
+                                class="text-red-500">*</span></label>
+
+                        <button @click="open = !open"
+                            class="w-full text-left bg-transparent border-b border-gray-500 py-1 text-gray-700 focus:outline-none">
+                           <span :class="selected ? 'text-gray-700' : 'text-gray-400'" x-text="selected || 'Pilih layanan'"></span>
+                            <svg class="w-4 h-4 inline float-right" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div x-show="open" @click.away="open = false" tabindex="-1"
+                            class="absolute z-10 mt-2 w-full bg-white/30 backdrop-blur-md border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto transition">
+                            <ul class="text-gray-800">
+                                <template
+                                    x-for="item in ['Birthday', 'Family', 'Graduation', 'Group', 'Maternity', 'Prewedding', 'Produk']">
+                                    <li>
+                                        <button type="button" @click.stop="selected = item; open = false"
+                                            class="w-full text-left px-4 py-2 hover:bg-white/40 transition">
+                                            <span x-text="item"></span>
+                                        </button>
+
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+
+                        <input type="hidden" name="layanan" :value="selected" required>
+                    </div>
+
+                    <div>
+                        <label class="uppercase text-xs tracking-widest text-gray-700 block mb-1">Jumlah Orang yang Akan
+                            Difoto<span class="text-red-500">*</span></label>
+                        <input type="number" name="jumlah_orang" min="1" required
+                            class="w-full border-b border-gray-500 bg-transparent focus:outline-none py-1">
+                    </div>
+
+                    <div>
+                        <label class="uppercase text-xs tracking-widest text-gray-700 block mb-1">Catatan Tambahan<span
+                                class="text-red-500">*</span></label>
+                        <textarea name="pesan" rows="4" required
+                            class="w-full border-b border-gray-500 bg-transparent focus:outline-none py-1"></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="uppercase bg-gray-800 text-white px-6 py-2 text-sm tracking-widest hover:bg-gray-700 transition">Kirim</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+    <script type="module" src="/src/main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script type="module">
+        import { loadNavbar } from '../js/navbar.js';
+        window.addEventListener('DOMContentLoaded', () => {
+            loadNavbar();
+            initScrollAnimations();
+        });
+        flatpickr("#tanggalPicker", {
+            dateFormat: "Y-m-d",
+            allowInput: true,
+            clickOpens: false
+        });
+        document.getElementById("tanggalPicker").addEventListener("click", function (e) {
+            if (e.target === this) {
+                this._flatpickr.open();
+            }
+        });
+
+
+
+
+        document.getElementById('waForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const nama = this.nama.value;
+            const instagram = this.instagram.value;
+            const email = this.email.value;
+            const layanan = this.layanan.value;
+            const tanggal = this.tanggal.value;
+            const jumlahOrang = this.jumlah_orang.value;
+            const pesan = this.pesan.value;
+
+
+            const tanggalInput = new Date(tanggal);
+            const hariIni = new Date();
+            hariIni.setHours(0, 0, 0, 0);
+
+            if (!layanan) {
+                alert("Silakan pilih kategori layanan terlebih dahulu.");
+                return;
+            }
+
+            if (tanggalInput < hariIni) {
+                alert("Tanggal pemotretan tidak boleh di masa lalu. Silakan pilih tanggal yang valid.");
+                return;
+            }
+
+            const noWa = '6281259706969';
+            const text = encodeURIComponent(
+                `Halo Kak, saya ingin melakukan pemesanan:\n\n` +
+                `Nama : ${nama}\n` +
+                `Instagram : ${instagram}\n` +
+                `Email : ${email}\n` +
+                `Jenis Layanan : ${layanan}\n` +
+                `Tanggal Pemotretan : ${tanggal}\n` +
+                `Jumlah Orang : ${jumlahOrang}\n` +
+                `Catatan Tambahan : ${pesan}`
+            );
+
+            const url = `https://wa.me/${noWa}?text=${text}`;
+            window.open(url, '_blank');
+
+        });
+    </script>
+</body>
+
+</html>

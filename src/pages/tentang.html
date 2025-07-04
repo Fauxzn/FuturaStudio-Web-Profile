@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Tentang Kami - Futura Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+</head>
+
+<body class="bg-[#F5EFE6]">
+  <div id="navbar"></div>
+  <section class="max-w-9xl mx-auto px-4 text-[#2e2e2e]">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-center gap-12">
+
+      <div class="flex-1 max-w-2xl text-[15px] leading-[1.9] space-y-6">
+        <p>
+          Kami percaya bahwa setiap pertemuan dan kisah manusia memiliki keindahan yang layak diabadikan dalam bingkai
+          visual.
+        </p>
+        <p>
+          Bagi kami, fotografi adalah seni menangkap detik-detik sederhana seperti senyum tulus, tatapan penuh makna,
+          atau cahaya lembut di ujung hari yang menjelma menjadi kenangan abadi.
+        </p>
+        <p class="pl-5 lg:pl-20">
+          Melalui momen-momen kecil yang penuh cerita, kami ingin mengajak Anda kembali merasakan hangatnya emosi yang
+          pernah hadir.
+        </p>
+        <p>
+          Setiap foto adalah narasi, setiap cahaya adalah harapan, dan setiap jepretan menjadi jembatan menuju cerita
+          yang tak terlupakan.
+        </p>
+        <p>
+          Karena seperti senja,<br />
+          setiap gambar menyimpan makna dan keajaiban dari sudut pandang yang berbeda.
+        </p>
+        <p class="font-semibold text-lg pt-4">Futura Studio</p>
+      </div>
+
+      <div class="ml-40 relative w-[260px] h-[500px]">
+
+        <img src="https://res.cloudinary.com/dwevy4ex2/image/upload/v1751644350/A16_wppy3j.jpg" class="absolute bottom-0 right-20 shadow-md w-[260px] z-10" />
+
+        <img src="https://res.cloudinary.com/dwevy4ex2/image/upload/v1751644348/A13_qqq1m4.jpg" class="absolute top-0 left-8 shadow-md w-[260px] z-0" />
+      </div>
+    </div>
+  </div>
+  <div id="footer"></div>
+
+  <script type="module" src="/src/main.js"></script>
+    <script type="module">
+    import { loadNavbar } from '../js/navbar.js';
+    
+    window.addEventListener('DOMContentLoaded', () => {
+      loadNavbar();
+      initScrollAnimations();
+    });
+  </script>
+  <script type="module" src="/main.js"></script>
+
+</body>
+
+</html>
